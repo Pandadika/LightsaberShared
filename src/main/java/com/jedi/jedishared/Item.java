@@ -4,27 +4,24 @@ import org.jetbrains.annotations.Nullable;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
 
 import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
 public class Item implements Serializable {
-    @Id @GeneratedValue
-    private final UUID id;
+    @Id
+    private UUID id;
     private String name;
     private Component component;
     private double price;
     @Nullable
     private String description;
 
-    public Item() {
-        this.id = UUID.randomUUID();
-    }
+    public Item() {}
 
-    public Item(String name, Component component, double price, @Nullable String description) {
-        this.id = UUID.randomUUID();
+    public Item(UUID id, String name, Component component, double price, @Nullable String description) {
+        this.id = id;
         this.name = name;
         this.component = component;
         this.price = price;
@@ -34,6 +31,8 @@ public class Item implements Serializable {
     public UUID getId() {
         return id;
     }
+
+    public void setId(UUID id) { this.id = id; }
 
     public String getName() {
         return name;
