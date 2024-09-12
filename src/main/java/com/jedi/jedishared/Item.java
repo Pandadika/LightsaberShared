@@ -1,9 +1,7 @@
 package com.jedi.jedishared;
 
+import jakarta.persistence.*;
 import org.jetbrains.annotations.Nullable;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -17,15 +15,18 @@ public class Item implements Serializable {
     private double price;
     @Nullable
     private String description;
+    @Nullable
+    private  UUID imageId;
 
-    public Item() {}
+    public Item(){}
 
-    public Item(UUID id, String name, Component component, double price, @Nullable String description) {
+    public Item(UUID id, String name, Component component, double price, @Nullable String description, @Nullable UUID imageID) {
         this.id = id;
         this.name = name;
         this.component = component;
         this.price = price;
         this.description = description;
+        this.imageId = imageID;
     }
 
     public UUID getId() {
@@ -66,4 +67,13 @@ public class Item implements Serializable {
     public void setDescription(@Nullable String description) {
         this.description = description;
     }
+
+    public UUID getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(UUID imageId) {
+        this.imageId = imageId;
+    }
+
 }
